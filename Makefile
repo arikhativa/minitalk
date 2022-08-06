@@ -3,25 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
+#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/05 15:08:18 by yoav             ###   ########.fr        #
+#    Updated: 2022/08/06 13:40:34 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk
-SERVER = server
+NAME = server
 CLIENT = client
 
+# server
+SERVER_DIR = ./server_project
+SERVER_OBJ = $(addprefix $(SERVER_DIR)/, server.a)
+
+# client
+CLIENT_DIR = ./client_project
+CLIENT_OBJ = $(addprefix $(CLIENT_DIR)/, client.a)
+
 # ft_printf
-FT_PRINTF_DIR = libft
+export FT_PRINTF_HEAD_DIR = libft
 
 # libft
 LIBFT_NAME = libft.a
 LIBFT_DIR = libft
-LIBFT_HEAD_DIR = libft/libft
+export LIBFT_HEAD_DIR = libft/libft
 LIBFT  = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
+
+# libminitalk
+LIBMINITALK_NAME = libminitalk.a
+LIBMINITALK_DIR = libminitalk
+export LIBMINITALK_HEAD_DIR = libminitalk
+LIBMINITALK  = $(addprefix $(LIBMINITALK_DIR)/, $(LIBMINITALK_NAME))
+
+export CC = cc
+export ARFLAGS = rs
 
 LDFLAGS = -L$(LIBFT_DIR)
 LDLIBS = -lft
@@ -30,19 +46,21 @@ LDLIBS = -lft
 
 export ROOT = $(PWD)
 
-all: $(NAME)
+all: $(NAME) $(CLIENT)
 
-$(SERVER):
-	$(MAKE) all -C ./server_src
+$(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(LIBMINITALK)
+	@$(MAKE) all -C $(CLIENT_DIR)
+	@$(CC) $(LDFLAGS) $(CLIENT_OBJ) $(LDLIBS) -o $@
 
-$(CLIENT):
+$(NAME): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
+	@$(MAKE) all -C $(SERVER_DIR)
+	@$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LDLIBS) -o $@
 
 $(LIBFT):
 	@$(MAKE) all -sC ./$(LIBFT_DIR)
 
-$(NAME): $(SERVER)
-	true
-# @$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
+$(LIBMINITALK):
+	@$(MAKE) all -sC ./$(LIBMINITALK_DIR)
 
 clean:
 	@$(MAKE) clean -sC ./$(LIBFT_DIR)
