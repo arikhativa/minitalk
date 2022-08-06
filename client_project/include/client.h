@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   client.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:21:42 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 14:19:19 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/06 14:31:00 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/06 14:59:35 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#ifndef CLIENT_H
+# define CLIENT_H
 
-void	print_client(void)
-{
-	ft_printf("client\n");
-}
+# include "input.h"
+# include "libminitalk.h"
+
+#endif

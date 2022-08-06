@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   pid_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 13:27:38 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/06 14:22:18 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/06 14:27:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#include "pid_print.h"
 
-# include "ft_printf.h"
+void	pid_print(void)
+{
+	pid_t	pid;
 
-#endif
+	pid =  getpid();
+	ft_printf("%d\n", pid);
+}

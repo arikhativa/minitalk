@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/06 14:18:24 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/06 15:08:30 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,16 +35,16 @@ LIBFT  = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 # libminitalk
 LIBMINITALK_NAME = libminitalk.a
 LIBMINITALK_DIR = libminitalk
-export LIBMINITALK_HEAD_DIR = libminitalk
+export LIBMINITALK_HEAD_DIR = $(addprefix $(LIBMINITALK_DIR)/, include)
 LIBMINITALK  = $(addprefix $(LIBMINITALK_DIR)/, $(LIBMINITALK_NAME))
 
 export CC = cc
 export ARFLAGS = rs
 
-LDFLAGS = -L$(LIBFT_DIR)
-LDLIBS = -lft
+LDFLAGS = -L$(LIBFT_DIR) -L$(LIBMINITALK_DIR)
+LDLIBS = -lft -lminitalk
 
-.PHONY: clean fclean re all
+.PHONY: clean fclean re all $(SERVER_OBJ) $(CLIENT_OBJ) $(LIBMINITALK)
 
 export ROOT = $(PWD)
 
@@ -61,14 +61,14 @@ $(SERVER): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
 $(CLIENT_OBJ):
 	@$(MAKE) all -C $(CLIENT_DIR)
 
-$(SERVER_OBJ):
+$(SERVER_OBJ): 
 	@$(MAKE) all -C $(SERVER_DIR)
-
-$(LIBFT):
-	@$(MAKE) all -sC ./$(LIBFT_DIR)
 
 $(LIBMINITALK):
 	@$(MAKE) all -sC ./$(LIBMINITALK_DIR)
+
+$(LIBFT):
+	@$(MAKE) all -sC ./$(LIBFT_DIR)
 
 clean:
 	@$(MAKE) clean -sC ./$(LIBFT_DIR)

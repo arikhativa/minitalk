@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 14:19:27 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/06 14:54:35 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/06 14:57:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#ifndef INPUT_H
+# define INPUT_H
 
-# include "ft_printf.h"
+# include "libft.h"
+# include "libminitalk.h"
 
-void	print_client(void);
+t_error_code input_is_valid(int ac, char **av);
 
 #endif

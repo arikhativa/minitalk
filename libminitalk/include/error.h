@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:11:45 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 13:23:27 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/06 14:45:09 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/06 15:05:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-int	main(void)
-{
-	print_client();
-	return (0);
-}
+# include "define.h"
+
+t_error_code	error_code(t_error_code);
+
+#endif

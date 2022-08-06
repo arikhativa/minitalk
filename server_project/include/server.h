@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalklib.h                                      :+:      :+:    :+:   */
+/*   server.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:26:14 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 14:18:59 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/06 14:23:44 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/06 14:28:38 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef libminitalk_H
-# define libminitalk_H
+#ifndef SERVER_H
+# define SERVER_H
 
-void	print_minitlaklib(void);
+# include "pid_print.h"
 
 #endif

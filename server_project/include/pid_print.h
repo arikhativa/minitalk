@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   pid_print.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:21:42 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 14:19:07 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/06 14:22:47 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/06 14:25:09 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#ifndef PID_PRINT_H
+# define PID_PRINT_H
 
-void	print_minitlaklib(void)
-{
-	ft_printf("print_minitlaklib\n");
-}
+# include <unistd.h>
+
+# include "ft_printf.h"
+
+void	pid_print(void);
+
+#endif
