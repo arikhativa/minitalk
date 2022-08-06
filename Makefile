@@ -6,12 +6,14 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/06 13:40:34 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/06 14:18:24 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = server
+SERVER = server
 CLIENT = client
+
+NAME = minitalk
 
 # server
 SERVER_DIR = ./server_project
@@ -46,15 +48,21 @@ LDLIBS = -lft
 
 export ROOT = $(PWD)
 
-all: $(NAME) $(CLIENT)
+all: $(NAME)
+
+$(NAME): $(SERVER) $(CLIENT)
 
 $(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(LIBMINITALK)
-	@$(MAKE) all -C $(CLIENT_DIR)
 	@$(CC) $(LDFLAGS) $(CLIENT_OBJ) $(LDLIBS) -o $@
 
-$(NAME): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
-	@$(MAKE) all -C $(SERVER_DIR)
+$(SERVER): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
 	@$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LDLIBS) -o $@
+
+$(CLIENT_OBJ):
+	@$(MAKE) all -C $(CLIENT_DIR)
+
+$(SERVER_OBJ):
+	@$(MAKE) all -C $(SERVER_DIR)
 
 $(LIBFT):
 	@$(MAKE) all -sC ./$(LIBFT_DIR)
@@ -64,10 +72,16 @@ $(LIBMINITALK):
 
 clean:
 	@$(MAKE) clean -sC ./$(LIBFT_DIR)
-	@$(RM) $(OBJ)
+	@$(MAKE) clean -sC ./$(CLIENT_DIR)
+	@$(MAKE) clean -sC ./$(SERVER_DIR)
+	@$(MAKE) clean -sC ./$(LIBMINITALK_DIR)
 
 fclean: clean
 	@$(MAKE) fclean -sC ./$(LIBFT_DIR)
-	@$(RM) $(NAME)
+	@$(MAKE) fclean -sC ./$(CLIENT_DIR)
+	@$(MAKE) fclean -sC ./$(SERVER_DIR)
+	@$(MAKE) fclean -sC ./$(LIBMINITALK_DIR)
+	@$(RM) $(SERVER)
+	@$(RM) $(CLIENT)
 
 re: fclean all

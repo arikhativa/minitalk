@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:21:42 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 13:27:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/06 14:19:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "print.h"
 
-int	print_minitlaklib(void)
+void	print_minitlaklib(void)
 {
 	ft_printf("print_minitlaklib\n");
 }

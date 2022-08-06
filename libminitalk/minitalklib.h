@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:26:14 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 13:30:05 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/06 14:18:59 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef libminitalk_H
 # define libminitalk_H
 
-int	print_minitlaklib(void);
+void	print_minitlaklib(void);
 
 #endif
