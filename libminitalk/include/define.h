@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 17:41:01 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/07 16:19:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ONE		(0x01)
 
 // General
-# define DEFAULT_MSG_LEN	100
+# define DEFAULT_MSG_LEN	10
 
 // Boolean
 # define TRUE	1

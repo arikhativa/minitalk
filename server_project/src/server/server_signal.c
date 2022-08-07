@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/07 16:15:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/07 16:26:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_error_code	extend_msg_if_needed(t_server_meta *m)
 		if (SUCCESS != err)
 			return (err);
 	}
-	if (m->index >= m->len)
+	if (m->index == m->len)
 	{
 		tmp = m->msg;
 		m->msg = ft_calloc(((m->len * 2) + 1), sizeof(unsigned char));
@@ -32,8 +32,9 @@ t_error_code	extend_msg_if_needed(t_server_meta *m)
 			free(tmp);
 			return (FAILED_TO_EXTEND_MSG);
 		}
-		ft_memcmp(m->msg, tmp, m->len);
-		m->len = m->len * 2;
+		ft_memcpy(m->msg, tmp, (m->index));
+		m->msg[m->index] = 0;
+		m->len = (m->len * 2);
 		free(tmp);
 		tmp = NULL;
 	}
