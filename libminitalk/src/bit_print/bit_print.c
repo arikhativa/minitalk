@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libminitalk.h                                      :+:      :+:    :+:   */
+/*   bit_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 13:26:14 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/07 15:28:26 by yrabby           ###   ########.fr       */
+/*   Created: 2022/08/07 16:15:58 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/07 16:16:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBMINITALK_H
-# define LIBMINITALK_H
+#include "ft_printf.h"
 
-# include "define.h"
-# include "libft.h"
-# include "error.h"
+void	bit_print(unsigned char c)
+{
+	int	i = 0;
+	unsigned char mask = (1 << 7);
 
-void	bit_print(unsigned char c);
-
-
-#endif
+	while (i < 8)
+	{
+		ft_printf("%d", (!!(c & mask)));
+		mask >>= 1;
+		++i;
+	}
+	ft_printf("\n");
+}

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:31:00 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 17:59:13 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/07 16:11:44 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef	struct s_client_meta
 	int		server_pid;
 	char	*mgs;
 	int		index;
-	int		bit;
+	unsigned char		bit;
 	int		con;
 }				t_client_meta;
 

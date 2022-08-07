@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 18:48:10 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/07 16:15:21 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_error_code	extend_msg_if_needed(t_server_meta *m)
 {
 	t_error_code	err;
-	unsigned char			*tmp;
+	unsigned char	*tmp;
 
 	if (0 == m->len)
 	{
@@ -40,22 +40,21 @@ t_error_code	extend_msg_if_needed(t_server_meta *m)
 	return (SUCCESS);
 }
 
-void	add_bit_to_char(t_server_meta *m, int bit)
+void	add_bit_to_char(t_server_meta *m, unsigned char bit)
 {
-	m->byte |= (bit << 7);
-	m->byte >>= 1;
+	m->byte |= (bit << m->bit);
 	++m->bit;
 }
 
 void	add_char_to_msg(t_server_meta *m)
 {
-	if (m->bit == (BYTE_SIZE - 1))
+	if (m->bit == BYTE_SIZE)
 	{
 		m->msg[m->index] = m->byte;
 		if ('\0' == m->byte)
 			m->print = TRUE;
 		++m->index;
-		m->bit = -1;
+		m->bit = 0;
 		m->byte = 0;
 	}
 }
@@ -109,7 +108,7 @@ void	handler_zero(int sig, siginfo_t *info, void *context)
 	}
 	if (TRUE == m->print)
 	{
-		ft_printf("%s\n", m->msg);
+		ft_printf("%s\n", (char *)m->msg);
 		server_meta_free(m);
 	}
 	if (ERROR == kill(info->si_pid, STC_CONTINUE))

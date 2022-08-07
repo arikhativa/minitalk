@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:20:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 18:47:09 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/07 16:15:09 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_error_code	send_bit(t_client_meta *m)
 {
-	char	c;
+	unsigned char	c;
 
-	c = m->mgs[m->index];
+	c = (unsigned char)m->mgs[m->index];
 	if ((c >> m->bit) & ONE)
 	{
 		if (ERROR == kill(m->server_pid, CTS_ONE))
@@ -33,7 +33,7 @@ t_error_code	send_null(t_client_meta *m)
 	int	i;
 
 	i = 0;
-	while (i < (BYTE_SIZE - 1))
+	while (i < BYTE_SIZE)
 	{
 		if (ERROR == kill(m->server_pid, CTS_ZERO))
 			return (KILL_ERROR);
