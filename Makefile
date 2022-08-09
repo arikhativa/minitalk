@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/09 14:10:54 by yoav             ###   ########.fr        #
+#    Updated: 2022/08/09 14:12:18 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ LIBFT_HEAD_DIR = libft/libft
 LIBFT = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 # headers
-ALL_HEADERS =  \ 
+ALL_HEADERS =  \
 	./client_project/client.h \
 	./client_project/input.h \
 	./libft/include/handler.h \

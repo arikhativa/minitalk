@@ -6,11 +6,16 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:53:35 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/09 14:20:44 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+// #include "server.h"
+
+#include <signal.h>
+#include <unistd.h>
+#include <zconf.h>
+#include <stdlib.h>
 
 void	handler_one(int sig, siginfo_t *info, void *context)
 {
