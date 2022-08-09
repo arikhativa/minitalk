@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
+#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/06 13:47:10 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/09 14:07:47 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME = server.a
 HEAD_DIR = include
 HEAD_NAME = $(wildcard include/*.h)
 
-SRC = $(wildcard src/**/*.c)
-OBJ = $(SRC:.c=.o)
 
 CFLAGS = -c \
 	-I$(HEAD_DIR) \
@@ -26,9 +24,6 @@ CFLAGS = -c \
 #-Wall -Werror -Wextra
 
 .PHONY: clean fclean re all
-
-%.o: %.c $(HEAD_NAME)
-	@$(CC) $(CFLAGS) $< -o $@ 
 
 all: $(NAME)
 
