@@ -6,11 +6,10 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:38:17 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:30:37 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/09 14:25:28 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "define.h"
 #include "error.h"
 
 static inline void	error_print(char *s)
