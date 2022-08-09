@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error_code.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:38:17 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 15:09:23 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:30:37 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libminitalk.h"
+#include "define.h"
+#include "error.h"
 
-static inline void error_print(char *s)
+static inline void	error_print(char *s)
 {
 	ft_putstr_fd(s, STDERROR);
 }
@@ -25,6 +26,12 @@ void	error_code_print(t_error_code err)
 		error_print("BAD_ARG_MISSING_PID\n");
 	else if (BAD_ARG_MISSING_MSG == err)
 		error_print("BAD_ARG_MISSING_MSG\n");
+	else if (KILL_ERROR == err)
+		error_print("KILL_ERROR\n");
+	else if (FAILED_TO_INIT_SERVER == err)
+		error_print("FAILED_TO_INIT_SERVER\n");
+	else if (FAILED_TO_EXTEND_MSG == err)
+		error_print("FAILED_TO_EXTEND_MSG\n");
 	else
 		error_print("Unknown error code\n");
 }

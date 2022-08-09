@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
+#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/06 15:08:30 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/09 13:11:15 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ LIBMINITALK  = $(addprefix $(LIBMINITALK_DIR)/, $(LIBMINITALK_NAME))
 export CC = cc
 export ARFLAGS = rs
 
-LDFLAGS = -L$(LIBFT_DIR) -L$(LIBMINITALK_DIR)
-LDLIBS = -lft -lminitalk
+LDFLAGS = -L$(LIBFT_DIR)
+LDLIBS = -lft 
 
 .PHONY: clean fclean re all $(SERVER_OBJ) $(CLIENT_OBJ) $(LIBMINITALK)
 
@@ -53,10 +53,10 @@ all: $(NAME)
 $(NAME): $(SERVER) $(CLIENT)
 
 $(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(LIBMINITALK)
-	@$(CC) $(LDFLAGS) $(CLIENT_OBJ) $(LDLIBS) -o $@
+	@$(CC) $(LDFLAGS) $(CLIENT_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
 
 $(SERVER): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
-	@$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LDLIBS) -o $@
+	$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
 
 $(CLIENT_OBJ):
 	@$(MAKE) all -C $(CLIENT_DIR)

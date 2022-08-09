@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:29:37 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 18:23:35 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:38:47 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	main(int ac, char **av)
 	ptr = clinet_meta(&meta);
 	ptr->server_pid = ft_atoi(av[1]);
 	ptr->mgs = av[2];
-	client_signal_init(ptr->server_pid);
+	err = client_signal_init(ptr->server_pid);
+	if (SUCCESS != err)
+		return (error_code(err));
 	err = send_str(clinet_meta(NULL));
 	if (SUCCESS != err)
 		return (error_code(err));

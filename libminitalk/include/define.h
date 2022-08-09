@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/07 16:19:43 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:38:14 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 # define STDERROR	2
 
 // Signals
-# define	CTS_ONE			(SIGUSR1)
-# define	CTS_ZERO		(SIGUSR2)
-# define	STC_CONTINUE	(SIGUSR1)
-# define	STC_ERROR		(SIGUSR2)
+# define CTS_ONE		(SIGUSR1)
+# define CTS_ZERO		(SIGUSR2)
+# define STC_CONTINUE	(SIGUSR1)
+# define STC_ERROR		(SIGUSR2)
 
 // Error Codes
 typedef enum e_error_code
@@ -45,7 +45,9 @@ typedef enum e_error_code
 	BAD_ARG_MISSING_PID,
 	KILL_ERROR,
 	FAILED_TO_INIT_SERVER,
-	FAILED_TO_EXTEND_MSG
+	FAILED_TO_EXTEND_MSG,
+	SIGACTION_ERROR,
+	SIGEMPTYSET_ERROR,
 }			t_error_code;
 
 #endif

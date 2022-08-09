@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:31:00 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/07 16:11:44 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:35:38 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 # include "input.h"
 # include "libft.h"
 # include "ft_printf.h"
-# include "libminitalk.h"
+# include "error.h"
 
-typedef	struct s_client_meta
+typedef struct s_client_meta
 {
-	int		server_pid;
-	char	*mgs;
-	int		index;
-	unsigned char		bit;
-	int		con;
+	int				server_pid;
+	char			*mgs;
+	int				index;
+	unsigned char	bit;
+	int				con;
 }				t_client_meta;
 
 t_client_meta	*clinet_meta(t_client_meta *new);
 
-void			client_signal_init(int pid);
+t_error_code	client_signal_init(int pid);
 t_error_code	send_str(t_client_meta *m);
 
 #endif

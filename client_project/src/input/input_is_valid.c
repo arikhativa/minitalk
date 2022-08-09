@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input_is_valid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:53:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 15:08:45 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:38:59 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "input.h"
 
-t_error_code input_is_valid(int ac, char **av)
+t_error_code	input_is_valid(int ac, char **av)
 {
 	if (3 != ac)
 		return (BAD_ARG_EXPECT_TWO);

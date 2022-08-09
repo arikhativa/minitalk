@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/06 18:08:43 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:38:25 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,27 @@ void	handler_error(int sig, siginfo_t *info, void *context)
 	ft_printf("clinet: server error\nserver pid: %d\n", info->si_pid);
 }
 
-void	client_signal_init(int pid)
+t_error_code	client_signal_init(int pid)
 {
+	t_error_code		error_code;
 	struct sigaction	con;
 	struct sigaction	err;
 
 	con.sa_sigaction = handler_continue;
-	sigemptyset(&con.sa_mask);
 	con.sa_flags = SA_SIGINFO;
 	err.sa_sigaction = handler_error;
-	sigemptyset(&err.sa_mask);
 	err.sa_flags = SA_SIGINFO;
-
-	sigaction(STC_CONTINUE, &con, NULL);
-	sigaction(STC_ERROR, &err, NULL);
+	error_code = sigemptyset(&con.sa_mask);
+	if (SUCCESS != error_code)
+		return (SIGEMPTYSET_ERROR);
+	error_code = sigemptyset(&err.sa_mask);
+	if (SUCCESS != error_code)
+		return (SIGEMPTYSET_ERROR);
+	error_code = sigaction(STC_CONTINUE, &con, NULL);
+	if (SUCCESS != error_code)
+		return (SIGACTION_ERROR);
+	error_code = sigaction(STC_ERROR, &err, NULL);
+	if (SUCCESS != error_code)
+		return (SIGACTION_ERROR);
+	return (SUCCESS);
 }

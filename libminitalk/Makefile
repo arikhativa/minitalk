@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
+#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/06 14:45:52 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/09 13:03:21 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CFLAGS = -c \
 .PHONY: clean fclean re all
 
 %.o: %.c $(HEAD_NAME)
-	@$(CC) $(CFLAGS) $< -o $@ 
+	$(CC) $(CFLAGS) $< -o $@ 
 
 all: $(NAME)
 
@@ -35,9 +35,9 @@ $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^
 
 clean:
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all

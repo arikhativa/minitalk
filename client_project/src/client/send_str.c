@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:20:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/07 16:15:09 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/09 13:31:53 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_error_code	send_str(t_client_meta *m)
 
 	while (m->mgs[m->index])
 	{
-		while(m->bit < BYTE_SIZE)
+		while (m->bit < BYTE_SIZE)
 		{
 			err = send_bit(m);
 			if (SUCCESS != err)
