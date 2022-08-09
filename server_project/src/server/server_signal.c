@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:27:30 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/09 13:53:35 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,21 @@ void	handler_zero(int sig, siginfo_t *info, void *context)
 	}
 }
 
-void	server_signal_init(void)
+t_error_code	server_signal_init(void)
 {
+	t_error_code		err;
 	struct sigaction	one;
 	struct sigaction	zero;
 
 	one.sa_sigaction = handler_one;
-	sigemptyset(&one.sa_mask);
 	one.sa_flags = SA_SIGINFO;
 	zero.sa_sigaction = handler_zero;
-	sigemptyset(&zero.sa_mask);
 	zero.sa_flags = SA_SIGINFO;
-	sigaction(CTS_ONE, &one, NULL);
-	sigaction(CTS_ZERO, &zero, NULL);
+	err = sig_set(&zero, CTS_ZERO);
+	if (SUCCESS != err)
+		return (err);
+	err = sig_set(&one, CTS_ONE);
+	if (SUCCESS != err)
+		return (err);
+	return (SUCCESS);
 }

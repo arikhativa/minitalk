@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:38:25 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/09 13:56:25 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,11 @@ t_error_code	client_signal_init(int pid)
 	con.sa_flags = SA_SIGINFO;
 	err.sa_sigaction = handler_error;
 	err.sa_flags = SA_SIGINFO;
-	error_code = sigemptyset(&con.sa_mask);
+	error_code = sg_set(&con, STC_CONTINUE);
 	if (SUCCESS != error_code)
-		return (SIGEMPTYSET_ERROR);
-	error_code = sigemptyset(&err.sa_mask);
+		return (error_code);
+	error_code = sig_set(&err, STC_ERROR);
 	if (SUCCESS != error_code)
-		return (SIGEMPTYSET_ERROR);
-	error_code = sigaction(STC_CONTINUE, &con, NULL);
-	if (SUCCESS != error_code)
-		return (SIGACTION_ERROR);
-	error_code = sigaction(STC_ERROR, &err, NULL);
-	if (SUCCESS != error_code)
-		return (SIGACTION_ERROR);
+		return (error_code);
 	return (SUCCESS);
 }
