@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/11 13:14:41 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/11 13:32:42 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef enum e_error_code
 	KILL_ERROR,
 	FAILED_TO_INIT_SERVER,
 	FAILED_TO_EXTEND_MSG,
+	SIGADDSET_ERROR,
 	SIGACTION_ERROR,
 	SIGEMPTYSET_ERROR,
 }			t_error_code;

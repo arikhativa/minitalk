@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk_signal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 14:29:37 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/11 13:29:43 by yoav             ###   ########.fr       */
+/*   Created: 2022/08/11 13:24:24 by yoav              #+#    #+#             */
+/*   Updated: 2022/08/11 13:32:33 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
+#include "minitalk_signal.h"
 
-int	main(int ac, char **av)
+t_error_code	sig_set(struct sigaction *ptr, int sig)
 {
-	t_error_code	err;
-	t_client_meta	meta;
-	t_client_meta	*ptr;
+	t_error_code		err;
 
-	err = input_is_valid(ac, av);
+	err = sigemptyset(&(ptr->sa_mask));
 	if (SUCCESS != err)
-		return (error_code(err));
-	ptr = clinet_meta(&meta);
-	ptr->server_pid = ft_atoi(av[1]);
-	ptr->mgs = av[2];
-	err = client_signal_init();
+		return (SIGEMPTYSET_ERROR);
+	err = sigaddset(&(ptr->sa_mask), sig);
 	if (SUCCESS != err)
-		return (error_code(err));
-	err = send_str(clinet_meta(NULL));
+		return (SIGADDSET_ERROR);
+	err = sigaction(sig, ptr, NULL);
 	if (SUCCESS != err)
-		return (error_code(err));
+		return (SIGACTION_ERROR);
 	return (SUCCESS);
 }
