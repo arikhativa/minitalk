@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:38:25 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/11 13:22:57 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ void	handler_continue(int sig, siginfo_t *info, void *context)
 {
 	t_client_meta	*m;
 
-	m = clinet_meta(NULL);
-	m->con = TRUE;
 	(void)sig;
 	(void)info;
 	(void)context;
+	m = clinet_meta(NULL);
+	m->con = TRUE;
 }
 
 void	handler_error(int sig, siginfo_t *info, void *context)
 {
+	(void)sig;
+	(void)info;
+	(void)context;
 	ft_printf("clinet: server error\nserver pid: %d\n", info->si_pid);
 }
 
