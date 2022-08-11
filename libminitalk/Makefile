@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/09 13:03:21 by yoav             ###   ########.fr        #
+#    Updated: 2022/08/11 13:16:13 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,10 @@ HEAD_NAME = $(wildcard include/*.h)
 SRC = $(wildcard src/**/*.c)
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -c \
+CFLAGS = -c -Wall -Werror -Wextra \
 	-I$(HEAD_DIR) \
 	-I$(addprefix $(ROOT)/, $(LIBFT_HEAD_DIR)) \
 	-I$(addprefix $(ROOT)/, $(FT_PRINTF_HEAD_DIR))
-#-Wall -Werror -Wextra
 
 .PHONY: clean fclean re all
 

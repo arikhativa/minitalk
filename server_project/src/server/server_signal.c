@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:27:30 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/11 13:18:38 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	handler_one(int sig, siginfo_t *info, void *context)
 	t_server_meta	*m;
 	t_error_code	err;
 
+	(void)sig;
+	(void)context;
 	m = server_meta(NULL);
 	err = add_bit_to_msg(m, 1);
 	if (SUCCESS != err)
@@ -38,6 +40,8 @@ void	handler_zero(int sig, siginfo_t *info, void *context)
 	t_server_meta	*m;
 	t_error_code	err;
 
+	(void)sig;
+	(void)context;
 	m = server_meta(NULL);
 	err = add_bit_to_msg(m, 0);
 	if (SUCCESS != err)

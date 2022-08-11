@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/09 13:11:15 by yoav             ###   ########.fr        #
+#    Updated: 2022/08/11 13:16:02 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,13 +56,13 @@ $(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(LIBMINITALK)
 	@$(CC) $(LDFLAGS) $(CLIENT_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
 
 $(SERVER): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
-	$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
+	@$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
 
 $(CLIENT_OBJ):
-	@$(MAKE) all -C $(CLIENT_DIR)
+	@$(MAKE) all -sC $(CLIENT_DIR)
 
 $(SERVER_OBJ): 
-	@$(MAKE) all -C $(SERVER_DIR)
+	@$(MAKE) all -sC $(SERVER_DIR)
 
 $(LIBMINITALK):
 	@$(MAKE) all -sC ./$(LIBMINITALK_DIR)

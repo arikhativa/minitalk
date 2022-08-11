@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:38:14 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/11 13:14:41 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ONE		(0x01)
 
 // General
-# define DEFAULT_MSG_LEN	10
+# define DEFAULT_MSG_LEN	100
 
 // Boolean
 # define TRUE	1
