@@ -6,11 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:36:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 16:37:27 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/12 17:00:35 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+
+#include <stdio.h>
 
 t_error_code	extend_msg_if_needed(t_server_meta *m)
 {
@@ -19,12 +21,14 @@ t_error_code	extend_msg_if_needed(t_server_meta *m)
 
 	if (0 == m->len)
 	{
+		// printf("init\n");
 		err = server_meta_init(m);
 		if (SUCCESS != err)
 			return (err);
 	}
 	if (m->index == m->len)
 	{
+		// printf("ext\n");
 		tmp = m->msg;
 		m->msg = ft_calloc(((m->len * 2) + 1), sizeof(unsigned char));
 		if (!m->msg)
@@ -51,6 +55,12 @@ void	add_char_to_msg(t_server_meta *m)
 {
 	if (m->bit == BYTE_SIZE)
 	{
+		// if ('0' != m->byte)
+		// {
+		// 	printf("m->len' %d\n", m->len);
+		// 	printf("m->index' %d\n", m->index);
+		// 	printf("'%c'\n", m->byte);
+		// }
 		m->msg[m->index] = m->byte;
 		if ('\0' == m->byte)
 			m->print = TRUE;

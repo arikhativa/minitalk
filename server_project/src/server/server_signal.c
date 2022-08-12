@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/11 13:34:51 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/12 17:01:52 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	handler_one(int sig, siginfo_t *info, void *context)
 
 	(void)sig;
 	(void)context;
+	ft_printf("1\n");
 	m = server_meta(NULL);
 	err = add_bit_to_msg(m, 1);
 	if (SUCCESS != err)
@@ -41,6 +42,7 @@ void	handler_zero(int sig, siginfo_t *info, void *context)
 	t_error_code	err;
 
 	(void)sig;
+	ft_printf("0\n");
 	(void)context;
 	m = server_meta(NULL);
 	err = add_bit_to_msg(m, 0);

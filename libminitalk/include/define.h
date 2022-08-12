@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/11 13:32:42 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/12 16:59:41 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ONE		(0x01)
 
 // General
-# define DEFAULT_MSG_LEN	100
+# define DEFAULT_MSG_LEN	1
 
 // Boolean
 # define TRUE	1
