@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_code.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:38:17 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 14:25:28 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/12 18:15:51 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	error_code_print(t_error_code err)
 		error_print("FAILED_TO_INIT_SERVER\n");
 	else if (FAILED_TO_EXTEND_MSG == err)
 		error_print("FAILED_TO_EXTEND_MSG\n");
+	else if (SERVER_ERROR == err)
+		error_print("SERVER_ERROR\n");
+	else if (UNKNOWN_PID == err)
+		error_print("UNKNOWN_PID\n");
 	else
 		error_print("Unknown error code\n");
 }

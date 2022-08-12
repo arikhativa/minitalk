@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:23:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/11 13:35:02 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/12 17:34:26 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_server_meta
 	int				print;
 	unsigned char	bit;
 	unsigned char	byte;
+	int				current_client;
+	int				mid_msg;
 }				t_server_meta;
 
 t_server_meta	*server_meta(t_server_meta *new);

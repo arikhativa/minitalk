@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 16:59:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/12 18:15:06 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ONE		(0x01)
 
 // General
-# define DEFAULT_MSG_LEN	1
+# define DEFAULT_MSG_LEN	10000
 
 // Boolean
 # define TRUE	1
@@ -49,6 +49,8 @@ typedef enum e_error_code
 	SIGADDSET_ERROR,
 	SIGACTION_ERROR,
 	SIGEMPTYSET_ERROR,
+	SERVER_ERROR,
+	UNKNOWN_PID
 }			t_error_code;
 
 #endif

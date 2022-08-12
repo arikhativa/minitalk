@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:31:00 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/11 13:33:54 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/12 17:40:58 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CLIENT_H
 
 # include <unistd.h>
+# include <stdlib.h>
 # include <signal.h>
 
 # include "input.h"
