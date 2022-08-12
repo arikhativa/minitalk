@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 18:15:56 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/12 19:09:01 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	is_valid_clinet(t_server_meta *m, int pid)
 {
-	ft_printf("pid: %d\n", pid);
 	if (FALSE == m->mid_msg)
 	{
 		m->mid_msg = TRUE;
@@ -35,6 +34,7 @@ void	handler_one(int sig, siginfo_t *info, void *context)
 
 	(void)sig;
 	(void)context;
+	ft_printf("1");
 	m = server_meta(NULL); 
 	err = is_valid_clinet(m, info->si_pid);
 	if (SUCCESS != err)
@@ -64,6 +64,7 @@ void	handler_zero(int sig, siginfo_t *info, void *context)
 
 	(void)sig;
 	(void)context;
+	ft_printf("0");
 	m = server_meta(NULL);
 	err = is_valid_clinet(m, info->si_pid);
 	if (SUCCESS != err)
@@ -81,7 +82,7 @@ void	handler_zero(int sig, siginfo_t *info, void *context)
 	}
 	if (TRUE == m->print)
 	{
-		ft_printf("%s\n", (char *)m->msg);
+		ft_printf("\n%s\n", (char *)m->msg);
 		server_meta_free(m);
 	}
 	if (ERROR == kill(info->si_pid, STC_CONTINUE))

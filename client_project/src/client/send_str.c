@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:20:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 18:09:18 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/12 19:07:18 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ t_error_code	send_bit(t_client_meta *m)
 			return (KILL_ERROR);
 	}
 	else
+	{
 		if (ERROR == kill(m->server_pid, CTS_ZERO))
 			return (KILL_ERROR);
+	}
 	return (SUCCESS);
 }
 
