@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 18:15:06 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/13 17:23:59 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 // Bit Operation
 # define BYTE_SIZE	8
 # define ONE		(0x01)
+# define ZERO		(0x00)
 
 // General
 # define DEFAULT_MSG_LEN	10000

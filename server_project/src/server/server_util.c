@@ -6,13 +6,11 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:36:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 19:12:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/13 17:16:15 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-
-#include <stdio.h>
 
 t_error_code	extend_msg_if_needed(t_server_meta *m)
 {

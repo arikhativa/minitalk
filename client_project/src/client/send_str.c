@@ -6,11 +6,18 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:20:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 19:07:18 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/13 17:27:45 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
+
+void	wait_for_signal(t_client_meta *m)
+{
+	while (!m->con)
+		usleep(100);
+	m->con = FALSE;
+}
 
 t_error_code	send_bit(t_client_meta *m)
 {
@@ -39,9 +46,7 @@ t_error_code	send_null(t_client_meta *m)
 	{
 		if (ERROR == kill(m->server_pid, CTS_ZERO))
 			return (KILL_ERROR);
-		while (!m->con)
-			pause();
-		m->con = FALSE;
+		wait_for_signal(m);
 		++i;
 	}
 	return (SUCCESS);
@@ -59,9 +64,7 @@ t_error_code	send_str(t_client_meta *m)
 			if (SUCCESS != err)
 				return (err);
 			++m->bit;
-			while (!m->con)
-				pause();
-			m->con = FALSE;
+			wait_for_signal(m);
 		}
 		m->bit = 0;
 		++m->index;

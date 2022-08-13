@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 19:09:01 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/13 17:24:41 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-int	is_valid_clinet(t_server_meta *m, int pid)
+static int	is_valid_clinet(t_server_meta *m, int pid)
 {
 	if (FALSE == m->mid_msg)
 	{
@@ -27,68 +27,53 @@ int	is_valid_clinet(t_server_meta *m, int pid)
 	return (SUCCESS);
 }
 
-void	handler_one(int sig, siginfo_t *info, void *context)
+static void	generic_handler(t_server_meta *m, int sig_pid, int bit)
 {
-	t_server_meta	*m;
 	t_error_code	err;
 
-	(void)sig;
-	(void)context;
-	ft_printf("1");
-	m = server_meta(NULL); 
-	err = is_valid_clinet(m, info->si_pid);
+	err = is_valid_clinet(m, sig_pid);
 	if (SUCCESS != err)
 	{
 		error_code(err);
 		exit(err);
 	}
-	err = add_bit_to_msg(m, 1);
+	err = add_bit_to_msg(m, bit);
 	if (SUCCESS != err)
 	{
-		kill(info->si_pid, STC_ERROR);
+		kill(m->current_client, STC_ERROR);
 		error_code(err);
 		server_meta_free(m);
 		exit(err);
 	}
-	if (ERROR == kill(info->si_pid, STC_CONTINUE))
+	if (ERROR == kill(m->current_client, STC_CONTINUE))
 	{
 		error_code(KILL_ERROR);
 		exit(KILL_ERROR);
 	}
 }
 
-void	handler_zero(int sig, siginfo_t *info, void *context)
+void	handler_one(int sig, siginfo_t *info, void *context)
 {
 	t_server_meta	*m;
-	t_error_code	err;
 
 	(void)sig;
 	(void)context;
-	ft_printf("0");
 	m = server_meta(NULL);
-	err = is_valid_clinet(m, info->si_pid);
-	if (SUCCESS != err)
-	{
-		error_code(err);
-		exit(err);
-	}
-	err = add_bit_to_msg(m, 0);
-	if (SUCCESS != err)
-	{
-		kill(info->si_pid, STC_ERROR);
-		error_code(err);
-		server_meta_free(m);
-		exit(err);
-	}
+	generic_handler(m, info->si_pid, ONE);
+}
+
+void	handler_zero(int sig, siginfo_t *info, void *context)
+{
+	t_server_meta	*m;
+
+	(void)sig;
+	(void)context;
+	m = server_meta(NULL);
+	generic_handler(m, info->si_pid, ZERO);
 	if (TRUE == m->print)
 	{
-		ft_printf("\n%s\n", (char *)m->msg);
+		ft_printf("%s\n", (char *)m->msg);
 		server_meta_free(m);
-	}
-	if (ERROR == kill(info->si_pid, STC_CONTINUE))
-	{
-		error_code(KILL_ERROR);
-		exit(KILL_ERROR);
 	}
 }
 
@@ -97,14 +82,6 @@ t_error_code	server_signal_init(void)
 	t_error_code		err;
 	struct sigaction	one;
 	struct sigaction	zero;
-	// sigset_t			block_mask;
-
-	// sigemptyset(&block_mask);
-	// sigaddset(&block_mask, SIGINT);
-	// sigaddset(&block_mask, SIGQUIT);
-	
-	// zero.sa_mask = block_mask;
-	// one.sa_mask = block_mask;
 
 	one.sa_sigaction = handler_one;
 	one.sa_flags = SA_SIGINFO;
