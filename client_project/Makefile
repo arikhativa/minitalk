@@ -3,19 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
+#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/11 13:21:30 by yoav             ###   ########.fr        #
+#    Updated: 2022/08/14 12:25:22 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = client.a
 
 HEAD_DIR = include
-HEAD_NAME = $(wildcard include/*.h)
+HEAD_NAME = include/client.h
 
-SRC = $(wildcard src/**/*.c)
+SRC = src/client.c src/client_meta.c src/client_signal.c src/input_is_valid.c \
+	src/send_str.c
 OBJ = $(SRC:.c=.o)
 
 CFLAGS = -c -Wall -Werror -Wextra \
@@ -32,7 +33,7 @@ CFLAGS = -c -Wall -Werror -Wextra \
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $@ $^
+	@$(AR) $(ARFLAGS) $@ $^
 
 clean:
 	@$(RM) $(OBJ)

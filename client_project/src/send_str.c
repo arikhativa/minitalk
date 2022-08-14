@@ -6,20 +6,20 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:20:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/13 17:27:45 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:17:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-void	wait_for_signal(t_client_meta *m)
+static inline void	wait_for_signal(t_client_meta *m)
 {
 	while (!m->con)
-		usleep(100);
+		usleep(SLEEP_MILI_SEC);
 	m->con = FALSE;
 }
 
-t_error_code	send_bit(t_client_meta *m)
+static t_error_code	send_bit(t_client_meta *m)
 {
 	unsigned char	c;
 
@@ -37,7 +37,7 @@ t_error_code	send_bit(t_client_meta *m)
 	return (SUCCESS);
 }
 
-t_error_code	send_null(t_client_meta *m)
+static t_error_code	send_null(t_client_meta *m)
 {
 	int	i;
 

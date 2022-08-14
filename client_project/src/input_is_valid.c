@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_is_valid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:53:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/09 13:38:59 by yoav             ###   ########.fr       */
+/*   Updated: 2022/08/14 12:18:58 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "input.h"
+#include "client.h"
 
 t_error_code	input_is_valid(int ac, char **av)
 {

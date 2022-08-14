@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
+#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/11 13:16:52 by yoav             ###   ########.fr        #
+#    Updated: 2022/08/14 12:24:43 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = server.a
 
 HEAD_DIR = include
-HEAD_NAME = $(wildcard include/*.h)
+HEAD_NAME = include/server.h
 
-SRC = $(wildcard src/**/*.c)
+SRC = src/server.c src/server_meta.c src/server_signal.c src/server_util.c
 OBJ = $(SRC:.c=.o)
 
 CFLAGS = -c -Wall -Werror -Wextra \
@@ -27,17 +27,17 @@ CFLAGS = -c -Wall -Werror -Wextra \
 .PHONY: clean fclean re all
 
 %.o: %.c $(HEAD_NAME)
-	$(CC) $(CFLAGS) $< -o $@ 
+	@$(CC) $(CFLAGS) $< -o $@ 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $@ $^
+	@$(AR) $(ARFLAGS) $@ $^
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all

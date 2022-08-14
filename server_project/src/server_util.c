@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:36:44 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/13 17:16:15 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:14:03 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-t_error_code	extend_msg_if_needed(t_server_meta *m)
+static t_error_code	extend_msg_if_needed(t_server_meta *m)
 {
 	t_error_code	err;
 	unsigned char	*tmp;
@@ -41,13 +41,13 @@ t_error_code	extend_msg_if_needed(t_server_meta *m)
 	return (SUCCESS);
 }
 
-void	add_bit_to_char(t_server_meta *m, unsigned char bit)
+static void	add_bit_to_char(t_server_meta *m, unsigned char bit)
 {
 	m->byte |= (bit << m->bit);
 	++m->bit;
 }
 
-void	add_char_to_msg(t_server_meta *m)
+static void	add_char_to_msg(t_server_meta *m)
 {
 	if (m->bit == BYTE_SIZE)
 	{

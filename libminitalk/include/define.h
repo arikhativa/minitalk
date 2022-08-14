@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:22:39 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/13 17:23:59 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:17:38 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@
 # include <signal.h>
 
 // Bit Operation
-# define BYTE_SIZE	8
+# define BYTE_SIZE	(8)
 # define ONE		(0x01)
 # define ZERO		(0x00)
 
 // General
-# define DEFAULT_MSG_LEN	10000
+# define DEFAULT_MSG_LEN	(100)
+# define SLEEP_MILI_SEC		(150)
 
 // Boolean
-# define TRUE	1
+# define TRUE	(1)
 # define FALSE	(!TRUE)
 
 // File Descriptors
-# define STDERROR	2
+# define STDERROR	(2)
 
 // Signals
 # define CTS_ONE		(SIGUSR1)

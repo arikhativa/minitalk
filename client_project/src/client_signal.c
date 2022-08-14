@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 18:47:16 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:16:25 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	handler_continue(int sig, siginfo_t *info, void *context)
 	t_client_meta	*m;
 
 	(void)sig;
-	(void)info;
 	(void)context;
 	m = clinet_meta(NULL);
 	if (m->server_pid == info->si_pid)

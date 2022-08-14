@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:31:00 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 17:40:58 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:18:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <signal.h>
 
-# include "input.h"
 # include "libft.h"
 # include "ft_printf.h"
 # include "error.h"
@@ -33,8 +32,8 @@ typedef struct s_client_meta
 }				t_client_meta;
 
 t_client_meta	*clinet_meta(t_client_meta *new);
-
 t_error_code	client_signal_init(void);
 t_error_code	send_str(t_client_meta *m);
+t_error_code	input_is_valid(int ac, char **av);
 
 #endif
