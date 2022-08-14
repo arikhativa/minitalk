@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/14 12:25:22 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/14 12:47:46 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ NAME = client.a
 HEAD_DIR = include
 HEAD_NAME = include/client.h
 
-SRC = src/client.c src/client_meta.c src/client_signal.c src/input_is_valid.c \
-	src/send_str.c
+SRC = 
 OBJ = $(SRC:.c=.o)
 
 CFLAGS = -c -Wall -Werror -Wextra \
@@ -28,17 +27,17 @@ CFLAGS = -c -Wall -Werror -Wextra \
 .PHONY: clean fclean re all
 
 %.o: %.c $(HEAD_NAME)
-	@$(CC) $(CFLAGS) $< -o $@ 
+	$(CC) $(CFLAGS) $< -o $@ 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(AR) $(ARFLAGS) $@ $^
+	$(AR) $(ARFLAGS) $@ $^
 
 clean:
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all

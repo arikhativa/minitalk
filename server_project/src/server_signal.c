@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:22:54 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/13 17:24:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:28:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-static int	is_valid_clinet(t_server_meta *m, int pid)
+static int	is_valid_client(t_server_meta *m, int pid)
 {
 	if (FALSE == m->mid_msg)
 	{
@@ -31,7 +31,7 @@ static void	generic_handler(t_server_meta *m, int sig_pid, int bit)
 {
 	t_error_code	err;
 
-	err = is_valid_clinet(m, sig_pid);
+	err = is_valid_client(m, sig_pid);
 	if (SUCCESS != err)
 	{
 		error_code(err);

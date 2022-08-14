@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:38:17 by yrabby            #+#    #+#             */
-/*   Updated: 2022/08/12 18:15:51 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:28:13 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline void	error_print(char *s)
 	ft_putstr_fd(s, STDERROR);
 }
 
-void	error_code_print(t_error_code err)
+static inline void	error_code_print(t_error_code err)
 {
 	if (BAD_ARG_EXPECT_TWO == err)
 		error_print("BAD_ARG_EXPECT_TWO\n");
