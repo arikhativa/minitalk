@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 14:32:48 by yoav              #+#    #+#              #
-#    Updated: 2022/08/14 13:05:48 by yrabby           ###   ########.fr        #
+#    Updated: 2022/08/14 13:11:24 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,13 +74,12 @@ CFLAGS = -c -Wall -Werror -Wextra \
 
 .PHONY: clean fclean re all pre_build
 
-%.o: %.c $(CLIENT_HEAD_DIR) $(LIBFT_HEAD_DIR) $(LIBMINITALK_HEAD_DIR) \
-	$(FT_PRINTF_HEAD_DIR) $(SERVER_HEAD_DIR)
+%.o: %.c $(CLIENT_HEAD) $(LIBFT_HEAD) $(LIBMINITALK_HEAD) $(FT_PRINTF_HEAD) $(SERVER_HEAD)
 	$(CC) $(CFLAGS) $< -o $@ 
 
 all: $(NAME)
 
-$(NAME): $(SERVER) $(CLIENT)
+$(NAME): $(SERVER) $(CLIENT) 
 
 $(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(LIBMINITALK)
 	$(CC) $(LDFLAGS) $(CLIENT_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
@@ -88,7 +87,7 @@ $(CLIENT): $(CLIENT_OBJ) $(LIBFT) $(LIBMINITALK)
 $(SERVER): $(SERVER_OBJ) $(LIBFT) $(LIBMINITALK)
 	$(CC) $(LDFLAGS) $(SERVER_OBJ) $(LIBMINITALK) $(LDLIBS) -o $@
 
-$(LIBMINITALK): $(LIBMINITALK_OBJ)
+$(LIBMINITALK): $(LIBMINITALK_OBJ) $(LIBFT)
 	$(AR) $(ARFLAGS) $@ $^
 
 $(LIBFT):
@@ -98,6 +97,7 @@ clean:
 	$(MAKE) clean -sC ./$(LIBFT_DIR)
 	$(RM) $(SERVER_OBJ)
 	$(RM) $(LIBMINITALK_OBJ)
+	$(RM) $(LIBMINITALK)
 	$(RM) $(CLIENT_OBJ)
 
 fclean: clean
